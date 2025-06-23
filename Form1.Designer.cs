@@ -35,6 +35,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnUndo = new System.Windows.Forms.Button();
             this.listUndo = new System.Windows.Forms.ListBox();
+            this.btnRedo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOpen
@@ -58,7 +59,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(234, 12);
+            this.btnSave.Location = new System.Drawing.Point(218, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(173, 51);
             this.btnSave.TabIndex = 3;
@@ -72,7 +73,7 @@
             // 
             // btnUndo
             // 
-            this.btnUndo.Location = new System.Drawing.Point(428, 12);
+            this.btnUndo.Location = new System.Drawing.Point(397, 12);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(173, 51);
             this.btnUndo.TabIndex = 4;
@@ -89,11 +90,22 @@
             this.listUndo.Size = new System.Drawing.Size(154, 349);
             this.listUndo.TabIndex = 5;
             // 
+            // btnRedo
+            // 
+            this.btnRedo.Location = new System.Drawing.Point(576, 12);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(173, 51);
+            this.btnRedo.TabIndex = 6;
+            this.btnRedo.Text = "重作下一步";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRedo);
             this.Controls.Add(this.listUndo);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnSave);
@@ -114,6 +126,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.ListBox listUndo;
+        private System.Windows.Forms.Button btnRedo;
     }
 }
 
