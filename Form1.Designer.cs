@@ -31,6 +31,8 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.rtbText = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // btnOpen
@@ -41,12 +43,13 @@
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "開啟檔案";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // rtbText
             // 
             this.rtbText.Location = new System.Drawing.Point(29, 80);
             this.rtbText.Name = "rtbText";
-            this.rtbText.Size = new System.Drawing.Size(759, 345);
+            this.rtbText.Size = new System.Drawing.Size(759, 346);
             this.rtbText.TabIndex = 2;
             this.rtbText.Text = "RichTextBox";
             // 
@@ -59,6 +62,10 @@
             this.btnSave.Text = "存檔";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -79,6 +86,8 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.RichTextBox rtbText;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
