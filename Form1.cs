@@ -251,8 +251,15 @@ namespace Homework5
             comboBoxStyle.SelectedIndex = 0;
         }
 
+
+        private int selectionStart = 0;                            // 記錄文字反白的起點
+        private int selectionLength = 0;
+
         private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectionStart = rtbText.SelectionStart;
+            selectionLength = rtbText.SelectionLength;
+
             // 檢查當前選擇的文字是否有字型，如果有，則進行後續處理
             if (rtbText.SelectionFont != null)
             {
@@ -290,6 +297,8 @@ namespace Homework5
                     rtbText.SelectionFont = newFont;
                 }
             }
+            rtbText.Focus();
+            rtbText.Select(selectionStart, selectionLength);
         }
     }
 }
