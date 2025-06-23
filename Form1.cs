@@ -18,6 +18,11 @@ namespace Homework5
             InitializeComponent();
         }
 
+        private bool isUndo = false;
+        private Stack<string> textHistory = new Stack<string>();
+        private const int MaxHistoryCount = 10; // 最多紀錄10個紀錄
+
+
         private void btnOpen_Click(object sender, EventArgs e)
         {
             // 設置對話方塊標題
@@ -143,11 +148,18 @@ namespace Homework5
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
+            isUndo = true;
+            if (textHistory.Count > 1)
+            {
+                textHistory.Pop(); // 移除當前的文本內容
+                rtbText.Text = textHistory.Peek(); // 將堆疊頂部的文本內容設置為當前的文本內容                
+            }
+            UpdateListBox(); // 更新 ListBox
 
+            isUndo = false;
         }
 
-        private Stack<string> textHistory = new Stack<string>();
-        private const int MaxHistoryCount = 10; // 最多紀錄10個紀錄
+       
 
         private void rtbText_TextChanged(object sender, EventArgs e)
         {
