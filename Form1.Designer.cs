@@ -119,7 +119,6 @@
             this.comboBoxSize.Name = "comboBoxSize";
             this.comboBoxSize.Size = new System.Drawing.Size(97, 23);
             this.comboBoxSize.TabIndex = 8;
-            this.comboBoxSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxSize_SelectedIndexChanged);
             // 
             // comboBoxStyle
             // 
@@ -128,7 +127,6 @@
             this.comboBoxStyle.Name = "comboBoxStyle";
             this.comboBoxStyle.Size = new System.Drawing.Size(94, 23);
             this.comboBoxStyle.TabIndex = 9;
-            this.comboBoxStyle.SelectedIndexChanged += new System.EventHandler(this.comboBoxStyle_SelectedIndexChanged);
             // 
             // Form1
             // 

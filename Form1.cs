@@ -16,6 +16,9 @@ namespace Homework5
         public Form1()
         {
             InitializeComponent();
+            InitializeFontComboBox();
+            InitializeFontSizeComboBox();
+            InitializeFontStyleComboBox();
         }
 
         private bool isUndoRedo = false;
@@ -158,7 +161,7 @@ namespace Homework5
                 isUndoRedo = false;
             }
         }
-       
+
 
         private void rtbText_TextChanged(object sender, EventArgs e)
         {
@@ -213,19 +216,80 @@ namespace Homework5
             }
         }
 
+        private void InitializeFontComboBox()
+        {
+            // 將所有系統字體名稱添加到字體選擇框中
+            foreach (FontFamily font in FontFamily.Families)
+            {
+                comboBoxFont.Items.Add(font.Name);
+            }
+            // 設置預設選中的項目為第一個字體
+            comboBoxFont.SelectedIndex = 0;
+        }
+
+        private void InitializeFontSizeComboBox()
+        {
+            // 從8開始，每次增加2，直到72，將這些數值添加到字體大小選擇框中
+            for (int i = 8; i <= 72; i += 2)
+            {
+                comboBoxSize.Items.Add(i);
+            }
+            // 設置預設選中的項目為第三個大小，即12字體大小
+            comboBoxSize.SelectedIndex = 2;
+        }
+
+
+        private void InitializeFontStyleComboBox()
+        {
+            // 將不同的字體樣式添加到字體樣式選擇框中
+            comboBoxStyle.Items.Add(FontStyle.Regular.ToString());   // 正常
+            comboBoxStyle.Items.Add(FontStyle.Bold.ToString());      // 粗體
+            comboBoxStyle.Items.Add(FontStyle.Italic.ToString());    // 斜體
+            comboBoxStyle.Items.Add(FontStyle.Underline.ToString()); // 底線
+            comboBoxStyle.Items.Add(FontStyle.Strikeout.ToString()); // 刪除線
+                                                                     // 設置預設選中的項目為第一個樣式，即正常字體
+            comboBoxStyle.SelectedIndex = 0;
+        }
+
         private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // 檢查當前選擇的文字是否有字型，如果有，則進行後續處理
+            if (rtbText.SelectionFont != null)
+            {
+                // 從下拉選單中獲取選擇的字型、大小和樣式
+                string selectedFont = comboBoxFont.SelectedItem?.ToString();
+                string selectedSizeStr = comboBoxSize.SelectedItem?.ToString();
+                string selectedStyleStr = comboBoxStyle.SelectedItem?.ToString();
 
-        }
+                // 確保字型、大小和樣式都已選擇
+                if (selectedFont != null && selectedSizeStr != null && selectedStyleStr != null)
+                {
+                    // 將選擇的大小字串轉換為浮點數
+                    float selectedSize = float.Parse(selectedSizeStr);
+                    // 將選擇的樣式字串轉換為 FontStyle 枚舉值
+                    FontStyle selectedStyle = (FontStyle)Enum.Parse(typeof(FontStyle), selectedStyleStr);
 
-        private void comboBoxSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
+                    // 獲取當前選擇的文字的字型
+                    Font currentFont = rtbText.SelectionFont;
+                    FontStyle newStyle = currentFont.Style;
 
-        }
+                    // 檢查是否需要應用新的樣式，並更新樣式
+                    if (comboBoxStyle.SelectedItem.ToString() == FontStyle.Bold.ToString())
+                        newStyle = FontStyle.Bold;
+                    else if (comboBoxStyle.SelectedItem.ToString() == FontStyle.Italic.ToString())
+                        newStyle = FontStyle.Italic;
+                    else if (comboBoxStyle.SelectedItem.ToString() == FontStyle.Underline.ToString())
+                        newStyle = FontStyle.Underline;
+                    else if (comboBoxStyle.SelectedItem.ToString() == FontStyle.Strikeout.ToString())
+                        newStyle = FontStyle.Strikeout;
+                    else
+                        newStyle = FontStyle.Regular;
 
-        private void comboBoxStyle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+                    // 創建新的字型並應用到選擇的文字
+                    Font newFont = new Font(selectedFont, selectedSize, newStyle);
+                    rtbText.SelectionFont = newFont;
+                }
+            }
         }
     }
 }
