@@ -212,6 +212,21 @@ namespace Homework5
                 isUndoRedo = false;
             }
         }
+
+        private void comboBoxFont_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxStyle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
         
